@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descubriendo el Futuro Educativo - UNIMINUTO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #193B6D;
+            --secondary-yellow: #FFB900;
+            --light-gray: #F5F5F5;
+            --border-gray: #E0E0E0;
+            --text-dark: #202124;
+            --text-light: #5F6368;
+            --white: #FFFFFF;
+            --hover-bg: #F8F9FA;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #F5F7FA 0%, #E8EBF0 100%);
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, #2A5A9E 100%);
+            border-radius: 16px 16px 0 0;
+            padding: 48px 32px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: var(--secondary-yellow);
+            opacity: 0.1;
+            border-radius: 50%;
+            transform: translate(50%, -50%);
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            font-family: 'Outfit', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo::before {
+            content: '';
+            width: 32px;
+            height: 32px;
+            background: var(--secondary-yellow);
+            border-radius: 8px;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .description {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 16px;
+            line-height: 1.7;
+            max-width: 600px;
+        }
+
+        .form-card {
+            background: var(--white);
+            border-radius: 0 0 16px 16px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        .section {
+            padding: 40px 32px;
+            border-bottom: 1px solid var(--border-gray);
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid var(--secondary-yellow);
+            display: inline-block;
+        }
+
+        .section-description {
+            color: var(--text-light);
+            font-size: 14px;
+            margin-bottom: 24px;
+            font-style: italic;
+        }
+
+        .question {
+            margin-bottom: 32px;
+        }
+
+        .question:last-child {
+            margin-bottom: 0;
+        }
+
+        .question-label {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .question-label .required {
+            color: #D93025;
+            margin-left: 4px;
+        }
+
+        .question-label .optional {
+            color: var(--text-light);
+            font-size: 13px;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        .input-text {
+            width: 100%;
+            padding: 12px 16px;
+            font-size: 15px;
+            border: 1.5px solid var(--border-gray);
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.2s ease;
+            background: var(--white);
+        }
+
+        .input-text:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(25, 59, 109, 0.1);
+        }
+
+        .textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .radio-group,
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .radio-option,
+        .checkbox-option {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            border: 1.5px solid var(--border-gray);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: var(--white);
+        }
+
+        .radio-option:hover,
+        .checkbox-option:hover {
+            background: var(--hover-bg);
+            border-color: var(--primary-blue);
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 12px;
+            cursor: pointer;
+            accent-color: var(--primary-blue);
+        }
+
+        .radio-option label,
+        .checkbox-option label {
+            flex: 1;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+            border-left: 4px solid var(--primary-blue);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #FFF9C4 0%, #FFF59D 100%);
+            border-left: 4px solid var(--secondary-yellow);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .submit-section {
+            padding: 40px 32px;
+            text-align: center;
+            background: var(--light-gray);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, #2A5A9E 100%);
+            color: var(--white);
+            padding: 16px 48px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Outfit', sans-serif;
+            box-shadow: 0 4px 12px rgba(25, 59, 109, 0.3);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(25, 59, 109, 0.4);
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--light-gray);
+            z-index: 1000;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-blue), var(--secondary-yellow));
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 12px;
+            }
+
+            .header {
+                padding: 32px 20px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .section {
+                padding: 28px 20px;
+            }
+        }
+
+        .habeas-data-box {
+            background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+            border-left: 4px solid #4CAF50;
+            padding: 24px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .habeas-data-box h3 {
+            color: #2E7D32;
+            font-size: 16px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .habeas-data-box p {
+            margin-bottom: 8px;
+            color: #1B5E20;
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <div class="logo">UNIMINUTO</div>
+                <h1>Descubriendo el Futuro Educativo</h1>
+                <p class="description">
+                    Encuesta de Interés Educativo - Arboleda Campestre. Su opinión es fundamental para diseñar programas académicos que respondan a las necesidades de nuestra comunidad.
+                </p>
+            </div>
+        </div>
+
+        <form id="surveyForm" class="form-card">
+            
+            <!-- HABEAS DATA -->
+            <div class="section" data-section="0">
+                <h2 class="section-title">Autorización de Datos Personales</h2>
+                <div class="habeas-data-box">
+                    <h3>📋 Protección de Datos Personales - Habeas Data</h3>
+                    <p>De conformidad con la Ley 1581 de 2012 y el Decreto 1377 de 2013, autorizamos a UNIMINUTO para recolectar, almacenar, usar y circular nuestros datos personales con las siguientes finalidades:</p>
+                    <ul style="margin: 12px 0 12px 20px;">
+                        <li>Análisis estadístico de necesidades educativas en el sector</li>
+                        <li>Diseño y desarrollo de programas académicos pertinentes</li>
+                        <li>Envío de información sobre oferta educativa (si proporciona datos de contacto)</li>
+                        <li>Invitaciones a eventos académicos y culturales</li>
+                    </ul>
+                    <p>Sus datos serán tratados de manera confidencial y podrá ejercer sus derechos de acceso, rectificación y supresión contactando a UNIMINUTO.</p>
+                </div>
+                
+                <div class="question">
+                    <label class="question-label">
+                        Autorizo el tratamiento de mis datos personales conforme a lo descrito <span class="required">*</span>
+                    </label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" name="habeas_data" id="habeas_si" value="si" required>
+                            <label for="habeas_si">Sí, autorizo el tratamiento de mis datos personales</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="habeas_data" id="habeas_no" value="no">
+                            <label for="habeas_no">No autorizo (la encuesta no podrá ser procesada)</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 1 -->
+            <div class="section" data-section="1">
+                <h2 class="section-title">Sección 1: Información Demográfica</h2>
+                
+                <div class="question">
+                    <label class="question-label">
+                        1. ¿Cuál es su rango de edad? <span class="required">*</span>
+                    </label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" name="age" id="age1" value="18-25" required>
+                            <label for="age1">18-25 años</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="age" id="age2" value="26-35">
+                            <label for="age2">26-35 años</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="age" id="age3" value="36-45">
+                            <label for="age3">36-45 años</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="age" id="age4" value="46-55">
+                            <label for="age4">46-55 años</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="age" id="age5" value="56+">
+                            <label for="age5">Más de 56 años</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <label class="question-label">
+                        2. ¿Cuál es su género? <span class="required">*</span>
+                    </label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" name="gender" id="gen1" value="masculino" required>
+                            <label for="gen1">Masculino</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="gender" id="gen2" value="femenino">
+                            <label for="gen2">Femenino</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="gender" id="gen3" value="otro">
+                            <label for="gen3">Otro</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="gender" id="gen4" value="prefiero_no">
+                            <label for="gen4">Prefiero no decirlo</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <label class="question-label">
+                        3. ¿En qué conjunto residencial vive? <span class="required">*</span>
+                    </label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" name="residence" id="res1" value="saman" required>
+                            <label for="res1">Samán</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="residence" id="res2" value="gualanday">
+                            <label for="res2">Gualanday</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="residence" id="res3" value="igua">
+                            <label for="res3">Iguá</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="residence" id="res4" value="almendros">
+                            <label for="res4">Almendros</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="residence" id="res5" value="cambulos">
+                            <label for="res5">Cámbulos</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="residence" id="res6" value="totumo">
+                            <label for="res6">Totumo</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="residence" id="res7" value="yarumo">
+                            <label for="res7">Yarumo</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="residence" id="res8" value="payande">
+                            <label for="res8">Payandé</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="residence" id="res9" value="jagua">
+                            <label for="res9">Jagua</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="residence" id="res10" value="acacia">
+                            <label for="res10">Acacia</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="residence" id="res11" value="algarrobo">
+                            <label for="res11">Algarrobo</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="residence" id="res12" value="tulipan">
+                            <label for="res12">Tulipán</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="residence" id="res13" value="tamarindo">
+                            <label for="res13">Tamarindo</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="residence" id="res14" value="arenillo">
+                            <label for="res14">Arenillo</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="residence" id="res15" value="vainillo">
+                            <label for="res15">Vainillo</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="residence" id="res16" value="laurel">
+                            <label for="res16">Laurel</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="residence" id="res17" value="caracoli">
+                            <label for="res17">Caracolí</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="residence" id="res18" value="jacaranda">
+                            <label for="res18">Jacarandá</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="residence" id="res19" value="palma_real">
+                            <label for="res19">Palma Real</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="residence" id="res20" value="madrono">
+                            <label for="res20">Madroño</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="residence" id="res21" value="mandarino">
+                            <label for="res21">Mandarino</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="residence" id="res22" value="otro">
+                            <label for="res22">Otro conjunto en el sector</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <label class="question-label">
+                        4. ¿Cuál es su nivel educativo actual? <span class="required">*</span>
+                    </label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" name="education" id="edu1" value="bachiller" required>
+                            <label for="edu1">Bachiller</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="education" id="edu2" value="tecnico">
+                            <label for="edu2">Técnico</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="education" id="edu3" value="tecnologo">
+                            <label for="edu3">Tecnólogo</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="education" id="edu4" value="profesional">
+                            <label for="edu4">Profesional universitario</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="education" id="edu5" value="posgrado">
+                            <label for="edu5">Posgrado (Especialización, Maestría, Doctorado)</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 2 -->
+            <div class="section" data-section="2">
+                <h2 class="section-title">Sección 2: Interés en Educación Superior</h2>
+                
+                <div class="question">
+                    <label class="question-label">
+                        5. ¿Estaría interesado/a en estudiar una carrera o programa académico en UNIMINUTO? <span class="required">*</span>
+                    </label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" name="interest" id="int1" value="si" required>
+                            <label for="int1">Sí</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="interest" id="int2" value="talvez">
+                            <label for="int2">Tal vez</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="interest" id="int3" value="no">
+                            <label for="int3">No</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <label class="question-label">
+                        6. ¿Qué tipo de programa le interesaría? <span class="optional">(Puede marcar más de una)</span>
+                    </label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="program_type" id="prog1" value="tecnico">
+                            <label for="prog1">Técnico Profesional</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="program_type" id="prog2" value="tecnologo">
+                            <label for="prog2">Tecnología</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="program_type" id="prog3" value="profesional">
+                            <label for="prog3">Profesional Universitario</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="program_type" id="prog4" value="especializacion">
+                            <label for="prog4">Especialización</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="program_type" id="prog5" value="maestria">
+                            <label for="prog5">Maestría</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <label class="question-label">
+                        7. ¿Cuál es su principal motivación para estudiar? <span class="required">*</span>
+                    </label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" name="motivation" id="mot1" value="crecimiento" required>
+                            <label for="mot1">Crecimiento profesional</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="motivation" id="mot2" value="empleo">
+                            <label for="mot2">Conseguir empleo o mejor empleo</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="motivation" id="mot3" value="emprender">
+                            <label for="mot3">Emprender un negocio</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="motivation" id="mot4" value="personal">
+                            <label for="mot4">Desarrollo personal</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="motivation" id="mot5" value="cambio">
+                            <label for="mot5">Cambio de carrera</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <label class="question-label">
+                        8. Si respondió SÍ o TAL VEZ, ¿en qué modalidad preferiría estudiar? <span class="optional">(Puede marcar más de una)</span>
+                    </label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="modality" id="mod1" value="presencial">
+                            <label for="mod1">Presencial</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="modality" id="mod2" value="virtual">
+                            <label for="mod2">Virtual/distancia</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 3 -->
+            <div class="section" data-section="3">
+                <h2 class="section-title">Sección 3: Áreas de Formación de Interés</h2>
+                
+                <div class="question">
+                    <label class="question-label">
+                        9. ¿Cuál(es) de las siguientes áreas estaría interesado en formarse? <span class="optional">(Puede marcar hasta 3 opciones)</span> <span class="required">*</span>
+                    </label>
+                    
+                    <p style="font-weight: 600; color: var(--primary-blue); margin-bottom: 12px;">NEGOCIOS Y ADMINISTRACIÓN:</p>
+                    <div class="checkbox-group">
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="program" id="prog_adm1" value="administracion_empresas">
+                            <label for="prog_adm1">Administración de Empresas</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="program" id="prog_adm2" value="administracion_financiera">
+                            <label for="prog_adm2">Administración Financiera</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="program" id="prog_adm3" value="contaduria">
+                            <label for="prog_adm3">Contaduría Pública</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="program" id="prog_adm4" value="mercadeo">
+                            <label for="prog_adm4">Mercadeo</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="program" id="prog_adm5" value="seguridad_salud">
+                            <label for="prog_adm5">Administración en Seguridad y Salud en el Trabajo</label>
+                        </div>
+                    </div>
+
+                    <p style="font-weight: 600; color: var(--primary-blue); margin: 20px 0 12px;">INGENIERÍA:</p>
+                    <div class="checkbox-group">
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="program" id="prog_ing1" value="sistemas">
+                            <label for="prog_ing1">Ingeniería de Sistemas</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="program" id="prog_ing2" value="civil">
+                            <label for="prog_ing2">Ingeniería Civil</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="program" id="prog_ing3" value="ambiental">
+                            <label for="prog_ing3">Ingeniería Ambiental</label>
+                        </div>
+                    </div>
+
+                    <p style="font-weight: 600; color: var(--primary-blue); margin: 20px 0 12px;">EDUCACIÓN:</p>
+                    <div class="checkbox-group">
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="program" id="prog_edu1" value="lic_infantil">
+                            <label for="prog_edu1">Licenciatura en Educación Infantil</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="program" id="prog_edu2" value="lic_ingles">
+                            <label for="prog_edu2">Licenciatura en Lengua Extranjera con Énfasis en Inglés</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="program" id="prog_edu3" value="lic_ed_fisica">
+                            <label for="prog_edu3">Licenciatura en Educación Física, Recreación y Deportes</label>
+                        </div>
+                    </div>
+
+                    <p style="font-weight: 600; color: var(--primary-blue); margin: 20px 0 12px;">COMUNICACIÓN Y DISEÑO:</p>
+                    <div class="checkbox-group">
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="program" id="prog_com1" value="comunicacion">
+                            <label for="prog_com1">Comunicación Social - Periodismo</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="program" id="prog_com2" value="diseno">
+                            <label for="prog_com2">Diseño Gráfico</label>
+                        </div>
+                    </div>
+
+                    <p style="font-weight: 600; color: var(--primary-blue); margin: 20px 0 12px;">CIENCIAS SOCIALES Y HUMANAS:</p>
+                    <div class="checkbox-group">
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="program" id="prog_soc1" value="psicologia">
+                            <label for="prog_soc1">Psicología</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="program" id="prog_soc2" value="trabajo_social">
+                            <label for="prog_soc2">Trabajo Social</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="program" id="prog_soc3" value="derecho">
+                            <label for="prog_soc3">Derecho</label>
+                        </div>
+                    </div>
+
+                    <p style="font-weight: 600; color: var(--primary-blue); margin: 20px 0 12px;">POSGRADOS:</p>
+                    <div class="checkbox-group">
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="program" id="prog_pos1" value="esp_riesgos">
+                            <label for="prog_pos1">Especialización en Gerencia en Riesgos Laborales y Seguridad y Salud en el Trabajo</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <label class="question-label">
+                        10. Si su área de interés no está listada, por favor especifique:
+                    </label>
+                    <input type="text" name="other_area" class="input-text" placeholder="Escriba aquí el área o programa de su interés">
+                </div>
+            </div>
+
+            <!-- SECCIÓN 4 -->
+            <div class="section" data-section="4">
+                <h2 class="section-title">Sección 4: Barreras y Necesidades</h2>
+                
+                <div class="question">
+                    <label class="question-label">
+                        11. ¿Cuáles son las principales barreras que enfrenta para acceder a educación superior? <span class="optional">(Puede marcar hasta 2 opciones)</span> <span class="required">*</span>
+                    </label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="barrier" id="bar1" value="costos">
+                            <label for="bar1">Costos de matrícula y materiales</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="barrier" id="bar2" value="tiempo">
+                            <label for="bar2">Falta de tiempo (trabajo, familia)</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="barrier" id="bar3" value="distancia">
+                            <label for="bar3">Distancia a las universidades</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="barrier" id="bar4" value="informacion">
+                            <label for="bar4">Falta de información sobre programas</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="barrier" id="bar5" value="oferta">
+                            <label for="bar5">Falta de oferta académica en mi área de interés</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="barrier" id="bar6" value="ninguna">
+                            <label for="bar6">Ninguna barrera</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <label class="question-label">
+                        12. ¿Qué beneficios le atraen más de tener una universidad cerca de su residencia? <span class="optional">(Puede marcar hasta 2 opciones)</span> <span class="required">*</span>
+                    </label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="benefit" id="ben1" value="tiempo">
+                            <label for="ben1">Ahorro de tiempo en desplazamiento</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="benefit" id="ben2" value="costos">
+                            <label for="ben2">Reducción de costos de transporte</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="benefit" id="ben3" value="flexibilidad">
+                            <label for="ben3">Mayor flexibilidad para equilibrar estudios, trabajo y familia</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="benefit" id="ben4" value="comunidad">
+                            <label for="ben4">Formar parte de una comunidad educativa local</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="benefit" id="ben5" value="desarrollo">
+                            <label for="ben5">Contribuir al desarrollo del sector</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 5 -->
+            <div class="section" data-section="5">
+                <h2 class="section-title">Sección 5: Aspectos Económicos</h2>
+                
+                <div class="question">
+                    <label class="question-label">
+                        13. ¿Cuál es su situación laboral actual? <span class="required">*</span>
+                    </label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" name="employment" id="emp1" value="empleado_tiempo_completo" required>
+                            <label for="emp1">Empleado tiempo completo</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="employment" id="emp2" value="empleado_tiempo_parcial">
+                            <label for="emp2">Empleado tiempo parcial</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="employment" id="emp3" value="independiente">
+                            <label for="emp3">Trabajador independiente</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="employment" id="emp4" value="desempleado">
+                            <label for="emp4">Desempleado</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="employment" id="emp5" value="estudiante">
+                            <label for="emp5">Estudiante</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="employment" id="emp6" value="hogar">
+                            <label for="emp6">Ama de casa / Hogar</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <label class="question-label">
+                        14. ¿Cuánto estaría dispuesto/a a invertir mensualmente en su educación superior? <span class="required">*</span>
+                    </label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" name="budget" id="bud1" value="0-300" required>
+                            <label for="bud1">$0 - $300.000</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="budget" id="bud2" value="301-500">
+                            <label for="bud2">$301.000 - $500.000</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="budget" id="bud3" value="501-700">
+                            <label for="bud3">$501.000 - $700.000</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="budget" id="bud4" value="701-1000">
+                            <label for="bud4">$701.000 - $1.000.000</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="budget" id="bud5" value="1000+">
+                            <label for="bud5">Más de $1.000.000</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <label class="question-label">
+                        15. ¿Conoce las opciones de financiamiento para educación superior (ICETEX, créditos, becas, Cooperativa UNIMINUTO)? <span class="required">*</span>
+                    </label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" name="financing" id="fin1" value="conozco_usado" required>
+                            <label for="fin1">Sí, conozco y he usado</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="financing" id="fin2" value="conozco_no_usado">
+                            <label for="fin2">Sí, conozco pero no he usado</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="financing" id="fin3" value="escuchado">
+                            <label for="fin3">He escuchado algo pero no conozco detalles</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="financing" id="fin4" value="no_conozco">
+                            <label for="fin4">No conozco</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 6 -->
+            <div class="section" data-section="6">
+                <h2 class="section-title">Sección 6: Preferencias de Aprendizaje</h2>
+                
+                <div class="question">
+                    <label class="question-label">
+                        16. ¿Tiene acceso a internet estable en su hogar? <span class="required">*</span>
+                    </label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" name="internet" id="net1" value="si_estable" required>
+                            <label for="net1">Sí, internet estable</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="internet" id="net2" value="si_inestable">
+                            <label for="net2">Sí, pero es inestable</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="internet" id="net3" value="no">
+                            <label for="net3">No</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <label class="question-label">
+                        17. ¿Tiene dispositivos (computador, tablet) para estudiar virtualmente? <span class="required">*</span>
+                    </label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" name="devices" id="dev1" value="si_propio" required>
+                            <label for="dev1">Sí, propio</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="devices" id="dev2" value="si_compartido">
+                            <label for="dev2">Sí, pero compartido</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="devices" id="dev3" value="solo_celular">
+                            <label for="dev3">Solo tengo celular</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="devices" id="dev4" value="no">
+                            <label for="dev4">No</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <label class="question-label">
+                        18. ¿Qué duración de programa preferiría? <span class="required">*</span>
+                    </label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" name="duration" id="dur1" value="1-2" required>
+                            <label for="dur1">1-2 años (Técnico)</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="duration" id="dur2" value="2-3">
+                            <label for="dur2">2-3 años (Tecnología)</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="duration" id="dur3" value="4-5">
+                            <label for="dur3">4-5 años (Profesional)</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="duration" id="dur4" value="posgrado">
+                            <label for="dur4">Posgrado (1-2 años)</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 7 -->
+            <div class="section" data-section="7">
+                <h2 class="section-title">Sección 7: Horarios y Preferencias</h2>
+                
+                <div class="question">
+                    <label class="question-label">
+                        19. ¿En qué horario preferiría asistir a clases presenciales? <span class="required">*</span>
+                    </label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" name="schedule" id="sch1" value="noche" required>
+                            <label for="sch1">Noche (6:00 pm - 10:00 pm)</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="schedule" id="sch2" value="fines">
+                            <label for="sch2">Fines de semana</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="schedule" id="sch3" value="indiferente">
+                            <label for="sch3">Indiferente</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <label class="question-label">
+                        20. ¿Qué servicios adicionales le gustaría que ofreciera la universidad en el sector? <span class="optional">(Puede marcar varias)</span> <span class="required">*</span>
+                    </label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="services" id="ser1" value="biblioteca">
+                            <label for="ser1">Biblioteca</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="services" id="ser2" value="cafeteria">
+                            <label for="ser2">Cafetería</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="services" id="ser3" value="parqueadero">
+                            <label for="ser3">Parqueadero</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="services" id="ser4" value="salas">
+                            <label for="ser4">Salas de estudio</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="services" id="ser5" value="psicologico">
+                            <label for="ser5">Apoyo psicológico</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="services" id="ser6" value="orientacion">
+                            <label for="ser6">Orientación profesional</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="services" id="ser7" value="bolsa">
+                            <label for="ser7">Bolsa de empleo</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="services" id="ser8" value="asesorias">
+                            <label for="ser8">Asesorías empresariales</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 8 -->
+            <div class="section" data-section="8">
+                <h2 class="section-title">Sección 8: Contexto Familiar</h2>
+                <p class="section-description">Esta sección es solo para padres de familia con hijos en edad escolar o universitaria</p>
+                
+                <div class="question">
+                    <label class="question-label">
+                        21. ¿Tiene hijos en edad escolar o universitaria? <span class="required">*</span>
+                    </label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" name="haschildren" id="child1" value="si" required>
+                            <label for="child1">Sí</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="haschildren" id="child2" value="no">
+                            <label for="child2">No</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <label class="question-label">
+                        22. Si respondió SÍ, ¿en qué nivel educativo están? <span class="optional">(Puede marcar varios)</span>
+                    </label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="childlevel" id="clev1" value="primaria">
+                            <label for="clev1">Primaria</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="childlevel" id="clev2" value="bachillerato">
+                            <label for="clev2">Bachillerato</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="childlevel" id="clev3" value="universidad">
+                            <label for="clev3">Universidad</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="childlevel" id="clev4" value="profesional">
+                            <label for="clev4">Ya profesional</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <label class="question-label">
+                        23. ¿Cuántos hijos tiene en edad de acceder a educación superior? (15-25 años)
+                    </label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" name="numchildren" id="num1" value="1">
+                            <label for="num1">1</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="numchildren" id="num2" value="2">
+                            <label for="num2">2</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="numchildren" id="num3" value="3+">
+                            <label for="num3">3 o más</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="numchildren" id="num4" value="ninguno">
+                            <label for="num4">Ninguno</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <label class="question-label">
+                        24. ¿Estarían sus hijos interesados en estudiar en una universidad en Arboleda Campestre?
+                    </label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" name="childinterest" id="cint1" value="def_si">
+                            <label for="cint1">Definitivamente sí</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="childinterest" id="cint2" value="prob_si">
+                            <label for="cint2">Probablemente sí</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="childinterest" id="cint3" value="noseguro">
+                            <label for="cint3">No estoy seguro</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="childinterest" id="cint4" value="prob_no">
+                            <label for="cint4">Probablemente no</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="childinterest" id="cint5" value="def_no">
+                            <label for="cint5">Definitivamente no</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 9 -->
+            <div class="section" data-section="9">
+                <h2 class="section-title">Sección 9: Comentarios y Sugerencias</h2>
+                
+                <div class="question">
+                    <label class="question-label">
+                        25. ¿Qué programas académicos específicos le gustaría que UNIMINUTO ofreciera en Arboleda Campestre?
+                    </label>
+                    <textarea name="programs_suggestion" class="input-text textarea" placeholder="Escriba sus sugerencias aquí..."></textarea>
+                </div>
+
+                <div class="question">
+                    <label class="question-label">
+                        26. ¿Qué factores serían decisivos para que usted o su familia eligieran estudiar en UNIMINUTO Arboleda Campestre?
+                    </label>
+                    <textarea name="decisive_factors" class="input-text textarea" placeholder="Escriba sus respuestas aquí..."></textarea>
+                </div>
+
+                <div class="question">
+                    <label class="question-label">
+                        27. Comentarios adicionales o sugerencias:
+                    </label>
+                    <textarea name="additional_comments" class="input-text textarea" placeholder="Sus comentarios son muy importantes para nosotros..."></textarea>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 10 -->
+            <div class="section" data-section="10">
+                <h2 class="section-title">Datos de Contacto (OPCIONAL)</h2>
+                <div class="info-box">
+                    📧 Si desea recibir información sobre programas académicos y eventos de UNIMINUTO, por favor comparta sus datos de contacto:
+                </div>
+                
+                <div class="question">
+                    <label class="question-label">
+                        Nombre completo:
+                    </label>
+                    <input type="text" name="contact_name" class="input-text" placeholder="Su nombre completo">
+                </div>
+
+                <div class="question">
+                    <label class="question-label">
+                        Celular:
+                    </label>
+                    <input type="tel" name="contact_phone" class="input-text" placeholder="Ej: 3001234567">
+                </div>
+
+                <div class="question">
+                    <label class="question-label">
+                        Correo electrónico:
+                    </label>
+                    <input type="email" name="contact_email" class="input-text" placeholder="ejemplo@correo.com">
+                </div>
+            </div>
+
+            <!-- BOTÓN DE ENVÍO -->
+            <div class="submit-section">
+                <button type="submit" class="submit-btn">
+                    Enviar Encuesta
+                </button>
+                <p style="margin-top: 20px; color: var(--text-light); font-size: 13px;">
+                    Sus respuestas son confidenciales y serán utilizadas únicamente para mejorar la oferta educativa en su sector.
+                </p>
+            </div>
+        </form>
+    </div>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-analytics.js";
+  import { getDatabase, ref, push, set } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-database.js";
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyAjD_ENuOXlIlab8IDw4brFveb1w7DCJd8",
+    authDomain: "encuesta-arboleda-campestre.firebaseapp.com",
+    databaseURL: "https://encuesta-arboleda-campestre-default-rtdb.firebaseio.com",
+    projectId: "encuesta-arboleda-campestre",
+    storageBucket: "encuesta-arboleda-campestre.firebasestorage.app",
+    messagingSenderId: "307870101910",
+    appId: "1:307870101910:web:e585b66663b1748c51adb7",
+    measurementId: "G-RX6BV5S4DK"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  const database = getDatabase(app);
+
+  // Función para recopilar todos los datos del formulario
+  function collectFormData() {
+    const formData = {};
+    const form = document.getElementById('surveyForm');
+    const formElements = form.elements;
+
+    // Recopilar todos los campos del formulario
+    for (let element of formElements) {
+      if (element.name && element.name !== '') {
+        if (element.type === 'radio') {
+          if (element.checked) {
+            formData[element.name] = element.value;
+          }
+        } else if (element.type === 'checkbox') {
+          if (!formData[element.name]) {
+            formData[element.name] = [];
+          }
+          if (element.checked) {
+            formData[element.name].push(element.value);
+          }
+        } else if (element.type === 'text' || element.type === 'email' || element.type === 'tel' || element.type === 'textarea') {
+          if (element.value.trim() !== '') {
+            formData[element.name] = element.value.trim();
+          }
+        }
+      }
+    }
+
+    // Agregar timestamp
+    formData.timestamp = new Date().toISOString();
+    formData.submittedAt = new Date().toLocaleString('es-CO', { timeZone: 'America/Bogota' });
+
+    return formData;
+  }
+
+  // Función para guardar en Firebase
+  async function saveToFirebase(formData) {
+    try {
+      const surveysRef = ref(database, 'encuestas');
+      const newSurveyRef = push(surveysRef);
+      await set(newSurveyRef, formData);
+      return true;
+    } catch (error) {
+      console.error('Error guardando en Firebase:', error);
+      throw error;
+    }
+  }
+
+  // Manejar el envío del formulario
+  document.getElementById('surveyForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const submitBtn = document.querySelector('.submit-btn');
+    const originalText = submitBtn.textContent;
+    
+    // Validar autorización de Habeas Data
+    const habeasData = document.querySelector('input[name="habeas_data"]:checked');
+    
+    if (!habeasData) {
+      alert('Por favor, debe responder la autorización de datos personales para continuar.');
+      return;
+    }
+    
+    if (habeasData.value === 'no') {
+      alert('Para procesar su encuesta, debe autorizar el tratamiento de datos personales. Si tiene dudas, puede contactar a UNIMINUTO para más información.');
+      return;
+    }
+
+    // Deshabilitar botón y mostrar carga
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando...';
+
+    try {
+      // Recopilar datos
+      const formData = collectFormData();
+      
+      // Guardar en Firebase
+      await saveToFirebase(formData);
+      
+      // Éxito
+      alert('¡Gracias por completar la encuesta! Sus respuestas han sido guardadas exitosamente y nos ayudarán a desarrollar programas educativos que respondan a las necesidades de la comunidad de Arboleda Campestre.');
+      
+      // Limpiar formulario
+      document.getElementById('surveyForm').reset();
+      
+      // Scroll al inicio
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Hubo un error al enviar la encuesta. Por favor, intente nuevamente. Si el problema persiste, contacte a UNIMINUTO.');
+    } finally {
+      // Restaurar botón
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
+    }
+  });
+</script>
+
+    <script>
+        // Actualizar barra de progreso al hacer scroll
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollPercent = (scrollTop / scrollHeight) * 100;
+            document.getElementById('progressFill').style.width = scrollPercent + '%';
+        });
+
+        // Validar número máximo de checkboxes
+        function limitCheckboxes(name, max) {
+            const checkboxes = document.querySelectorAll(`input[name="${name}"]`);
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    const checked = document.querySelectorAll(`input[name="${name}"]:checked`);
+                    if (checked.length > max) {
+                        this.checked = false;
+                        alert(`Por favor seleccione máximo ${max} opciones.`);
+                    }
+                });
+            });
+        }
+
+        // Aplicar límites
+        limitCheckboxes('barrier', 2);
+        limitCheckboxes('program', 3);
+        limitCheckboxes('benefit', 2);
+
+        // Smooth scroll para preguntas
+        document.querySelectorAll('.question').forEach(question => {
+            question.style.scrollMarginTop = '80px';
+        });
+    </script>
+</body>
+</html>
